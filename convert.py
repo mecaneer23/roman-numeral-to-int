@@ -24,6 +24,18 @@ def using_itertools(roman: str) -> int:
     return total
 
 
+def using_rangelen(roman: str) -> int:
+    """Convert a roman numeral string to an integer"""
+    total = 0
+    for i in range(len(roman)):
+        prev = roman[i - 1]
+        curr = roman[i]
+        if i != 0 and ROMAN_NUMERALS[prev] < ROMAN_NUMERALS[curr]:
+            total -= ROMAN_NUMERALS[prev] * 2
+        total += ROMAN_NUMERALS[curr]
+    return total
+
+
 def using_enumerate(roman: str) -> int:
     """Convert a roman numeral string to an integer"""
     total = 0
